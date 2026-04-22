@@ -2,6 +2,7 @@
 [![Licence](https://img.shields.io/badge/licence-MIT-blue.svg)](https://shields.io/)
 
 # fly-multipass
+
 Multipass transport plugin for thefly
 
 Built for [thefly](https://github.com/joknarf/thefly).
@@ -18,28 +19,23 @@ The following features are available:
 
 ## Install
 
-* You can install using [thefly](https://github.com/joknarf/thefly) when the repository is published:
-```
+* You can install using [thefly](https://github.com/joknarf/thefly):
+
+```shell
 fly add f-atwi/fly-multipass
 ```
-* Or you can test using a local clone and wire it into your Fly plugins:
-```
-ln -sfn /path/to/fly-multipass ~/.fly.d/plugins/multipass
-ln -sfn ../plugins/multipass ~/.fly.d/plugins.d/50-multipass
-. ~/.fly.d/fly source
-```
-
-the implementation lives in `multipass`, while `multipass.plugin.bash`, `multipass.plugin.zsh`, and `multipass.plugin.ksh` can all point to it.
 
 ## Usage
 
 Open an interactive Fly shell in a Multipass instance:
-```
+
+```shell
 flymp primary
 ```
 
 Force the destination shell:
-```
+
+```shell
 flympb primary
 flympz primary
 flympk primary
@@ -48,5 +44,6 @@ flympk primary
 ## Notes
 
 * this plugin expects Fly to already be loaded in the current shell
-* current support targets bash, zsh, and ksh
+* this plugin expects multipass to already be installed
+* current support targets bash, zsh, and ksh (if existing of target VM)
 * fish is intentionally left for a later step because Fly handles fish plugins differently
