@@ -29,7 +29,6 @@ _fly_multipass_prepare()
 
     _fly_tmpdir="$FLY_TMPDIR/.fly.$(id -u)/$_fly_uuid"
     _fly_tarz="$FLY_TARZ"
-    . "$_fly_lib/init_fly" "$_fly_tmpdir"
 }
 
 _fly_multipass_stage()
@@ -37,7 +36,7 @@ _fly_multipass_stage()
     typeset instance stage_cmd
 
     instance="$1"
-    stage_cmd="$(_fly_xpretar) $(_fly_xpackage)"
+    stage_cmd="$(_fly_xpretar);$(_fly_xpackage)"
     _fly_package | multipass exec "$instance" -- /bin/sh -c "$stage_cmd"
 }
 
