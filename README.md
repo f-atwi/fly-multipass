@@ -1,7 +1,7 @@
 [![Shell](https://img.shields.io/badge/shell-bash%20|%20zsh%20|%20ksh%20-blue.svg)]()
 [![Licence](https://img.shields.io/badge/licence-MIT-blue.svg)](https://shields.io/)
 
-# fly-multipass
+# swarmpass
 
 Multipass transport plugin for thefly
 
@@ -13,16 +13,16 @@ The following features are available:
 
 * open your Fly environment inside a Multipass instance without using ssh
 * keep your Fly plugins, aliases, and shell environment available inside the instance
-* start an interactive shell in the instance with `flymp <instance>`
-* force destination shell using `flympb`, `flympz`, or `flympk`
-* use a short alias with `fmp`
+* start an interactive shell in the instance with `flympsh <instance>`
+* force destination shell using `flympshb`, `flympshz`, or `flympshk`
+* use a short alias with `fmpsh`
 
 ## Install
 
 * You can install using [thefly](https://github.com/joknarf/thefly):
 
 ```shell
-fly add f-atwi/fly-multipass
+fly add f-atwi/swarmpass
 ```
 
 ## Usage
@@ -30,15 +30,21 @@ fly add f-atwi/fly-multipass
 Open an interactive Fly shell in a Multipass instance:
 
 ```shell
-flymp primary
+flympsh primary
 ```
 
 Force the destination shell:
 
 ```shell
-flympb primary
-flympz primary
-flympk primary
+flympshb primary
+flympshz primary
+flympshk primary
+```
+
+Short alias:
+
+```shell
+fmpsh primary
 ```
 
 ## Notes

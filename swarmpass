@@ -1,7 +1,7 @@
-[ "$_fly_swarmpass_loaded" ] && return 0
-_fly_swarmpass_loaded=1
+[ "$_swarmpass_loaded" ] && return 0
+_swarmpass_loaded=1
 
-_fly_swarmpass_usage()
+_swarmpass_usage()
 {
     cat - <<'EOF'
 usage: flympsh <instance> [-- <command> [args...]]
@@ -10,7 +10,7 @@ Open a Fly environment inside a Multipass instance.
 EOF
 }
 
-_fly_swarmpass_prepare()
+_swarmpass_prepare()
 {
     : "${FLY_HOME:=$HOME}"
     : "${FLY_TMPDIR:=/tmp}"
@@ -31,7 +31,7 @@ _fly_swarmpass_prepare()
     _fly_tarz="$FLY_TARZ"
 }
 
-_fly_swarmpass_stage()
+_swarmpass_stage()
 {
     typeset instance stage_cmd
 
@@ -40,7 +40,7 @@ _fly_swarmpass_stage()
     _fly_package | multipass exec "$instance" -- /bin/sh -c "$stage_cmd"
 }
 
-_fly_swarmpass_attach()
+_swarmpass_attach()
 {
     typeset instance attach_cmd
 
@@ -49,26 +49,26 @@ _fly_swarmpass_attach()
     multipass exec "$instance" -- /bin/sh -c "$attach_cmd"
 }
 
-_fly_swarmpass_run()
+_swarmpass_run()
 {
     typeset instance
 
     instance="$1"
     shift
     [ "$instance" ] || {
-        _fly_swarmpass_usage >&2
+        _swarmpass_usage >&2
         return 1
     }
 
-    _fly_swarmpass_prepare || return $?
+    _swarmpass_prepare || return $?
 
-    _fly_swarmpass_stage "$instance" || return $?
-    _fly_swarmpass_attach "$instance"
+    _swarmpass_stage "$instance" || return $?
+    _swarmpass_attach "$instance"
 }
 
 flympsh()
 {
-    _fly_swarmpass_run "$@"
+    _swarmpass_run "$@"
 }
 
 fmpsh()
